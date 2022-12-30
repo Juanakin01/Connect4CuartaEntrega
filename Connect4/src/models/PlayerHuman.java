@@ -23,6 +23,9 @@ public class PlayerHuman extends Player {
             }catch(InputMismatchException exception){
                 Views.writeln(exception.getMessage());
                 caughtEx = true;
+            }catch(IndexOutOfBoundsException exception){
+                Views.writeln(exception.getMessage());
+                caughtEx = true;
             }
         } while(caughtEx);
     }

@@ -14,8 +14,9 @@ public class QuitOption extends Option {
     @Override
     public void interact(Board board) {
         BoardView.showBoard(board.getColors());
-        for(int i=board.getHistory().getIndexHistory(); i < board.getHistory().getList().size(); i++){
-            board.getHistory().getList().remove(i);
+        int toDelete = board.getHistory().getList().size();
+        for(int i=board.getHistory().getIndexHistory(); i < toDelete; i++){
+            board.getHistory().getList().removeLast();
         }
         this.executed = true;
     }
