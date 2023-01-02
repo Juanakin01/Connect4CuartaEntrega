@@ -25,13 +25,20 @@ public class Connect4 {
 
     }
 
+    public Board getBoard(){
+        return this.board;
+    }
+    
+    public Turn getTurn(){
+        return this.turn;
+    }
     private void playGame() {
         Message.TITLE.writeln();
         BoardView.showBoard(this.board.getColors());
         do {
             this.turn.play();
             do{
-                this.menuUR.interact(this.board);
+                this.menuUR.interact(this);
             }while(!this.menuUR.isExecutedQuitOption());
             Message.HORIZONTAL_LINE.writeln();
         } while (!board.isFull() && !this.isConnectFour());

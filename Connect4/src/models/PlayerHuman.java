@@ -1,7 +1,4 @@
 package models;
-
-import java.util.InputMismatchException;
-
 import views.UtilMenuView;
 import views.Views;
 
@@ -13,19 +10,17 @@ public class PlayerHuman extends Player {
         super(color, board);
     }
 
-    public void play() throws InputMismatchException {
-        boolean caughtEx;
+    public void play(){
+        boolean caughtEx = true;
         do{
             try{
                 Coordinate coordinate = new Coordinate(0,UtilMenuView.getInt("Introduce column:"));
                 this.board.putToken(coordinate.getPosCol(), this.color);
                 caughtEx = false;
-            }catch(InputMismatchException exception){
+            }catch(IllegalArgumentException exception){
                 Views.writeln(exception.getMessage());
-                caughtEx = true;
             }catch(IndexOutOfBoundsException exception){
                 Views.writeln(exception.getMessage());
-                caughtEx = true;
             }
         } while(caughtEx);
     }

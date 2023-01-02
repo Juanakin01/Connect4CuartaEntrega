@@ -3,7 +3,8 @@ package menuundoredo;
 import java.util.ArrayList;
 import java.util.List;
 
-import models.Board;
+import models.Connect4;
+import models.History;
 import views.UtilMenuView;
 
 public abstract class Menu {
@@ -15,15 +16,15 @@ public abstract class Menu {
         this.options = new ArrayList<Option>();
     }
 
-    public void interact(Board board) {
-        this.interact_(board);
+    public void interact(Connect4 connect4) {
+        this.interact_(connect4);
     }
 
-    public abstract void addOptions();
+    public abstract void addOptions(History history);
 
-    protected void interact_(Board board) {
+    protected void interact_(Connect4 connect4) {
         this.showTitles();
-        this.execChooseOption(board);
+        this.execChooseOption(connect4);
     }
 
     protected void showTitles() {
@@ -43,7 +44,7 @@ public abstract class Menu {
         UtilMenuView.write(string);
     }
 
-    protected void execChooseOption(Board board) {
+    protected void execChooseOption(Connect4 connect4) {
         int answer;
         boolean ok;
         do {
@@ -53,7 +54,7 @@ public abstract class Menu {
                 UtilMenuView.write("Error!!!");
             }
         } while (!ok);
-        this.options.get(answer).interact(board);
+        this.options.get(answer).interact(connect4);
     }
 
     protected void add(Option option) {

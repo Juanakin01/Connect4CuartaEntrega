@@ -1,21 +1,22 @@
 package menuundoredo;
 
-import models.Board;
+import models.Connect4;
+import models.History;
 import views.BoardView;
 import views.Views;
 
 public class MenuRedo extends Option {
 
-    public MenuRedo() {
-        super("Redo");
+    public MenuRedo(History history) {
+        super("Redo " + (history.getList().size() - history.getIndexHistory()) + " left" );
     }
 
     @Override
-    public void interact(Board board) {
+    public void interact(Connect4 connect4) {
         try {
-            board.getHistory().redo(board);
-            BoardView.showBoard(board.getColors());
-            Views.writeln(board.getHistory().getList().size() - board.getHistory().getIndexHistory() + " redos left" );
+            connect4.getBoard().getHistory().redo(connect4.getBoard());
+            BoardView.showBoard(connect4.getBoard().getColors());
+            connect4.getTurn().updateActivePlayer();
         }catch(IndexOutOfBoundsException ex){
             Views.writeln(ex.getMessage());
         }

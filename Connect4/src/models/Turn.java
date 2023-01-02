@@ -1,7 +1,7 @@
 package models;
 
 
-class Turn {
+public class Turn {
 
     private Board board;
     static final int NUMBER_PLAYERS = 2;
@@ -23,6 +23,10 @@ class Turn {
 
     public void play(){
         this.players[this.activePlayer].play();
+        this.updateActivePlayer();
+    }
+
+    public void updateActivePlayer(){
         if (!this.board.isConnectFour(this.getActiveColor())) {
             this.activePlayer = (this.activePlayer + 1) % Turn.NUMBER_PLAYERS;
         }

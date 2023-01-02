@@ -13,7 +13,7 @@ public class History{
         this.history = new LinkedList<>();
         this.currentToken = new Coordinate(0,0);
         this.indexHistory = 0;
-        this.currentColor = Color.X;
+        this.currentColor = Color.NULL;
     }
 
     public LinkedList<Coordinate> getList(){
@@ -24,13 +24,17 @@ public class History{
         return this.indexHistory;
     }
 
+    public void setColor(Color color){
+        this.currentColor = color;
+    }
+
     void updateHistory(Coordinate lastToken){
         this.currentToken = lastToken;
         this.history.add(this.indexHistory++, lastToken);
     }
 
     private void changeColor(){
-        if(currentColor == Color.X){
+        if(this.currentColor == Color.X){
             this.currentColor = Color.O;
         }else{
             this.currentColor = Color.X;
@@ -42,8 +46,8 @@ public class History{
             throw new IndexOutOfBoundsException(utils.Error.NO_UNDO_OPTION.getMessage());
         }
         this.currentToken = this.history.get(--this.indexHistory);
-        this.changeColor();
         board.setColors(this.currentToken, Color.NULL);
+        this.changeColor();
     }
 
     public void redo(Board board){
@@ -51,7 +55,7 @@ public class History{
             throw new IndexOutOfBoundsException(utils.Error.NO_REDO_OPTION.getMessage());
         }
         this.currentToken = this.history.get(this.indexHistory++);
-        this.changeColor();
         board.setColors(this.currentToken, this.currentColor);
-    }
+        this.changeColor();
+        }
 }

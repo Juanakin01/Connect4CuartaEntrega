@@ -1,6 +1,7 @@
 package menuundoredo;
 
-import models.Board;
+
+import models.Connect4;
 
 abstract class IterativeMenu extends QuitMenu {
     public IterativeMenu(String title) {
@@ -8,11 +9,11 @@ abstract class IterativeMenu extends QuitMenu {
     }
 
     @Override
-    public void interact(Board board) {
-        this.removeOptions();
-        this.addOptions();
+    public void interact(Connect4 connect4) {
         do {
-            this.interact_(board);
+            this.removeOptions();
+            this.addOptions(connect4.getBoard().getHistory());
+            this.interact_(connect4);
         } while (!this.isExecutedQuitOption());
     }
 }

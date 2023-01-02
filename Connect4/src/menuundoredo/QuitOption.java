@@ -1,6 +1,6 @@
 package menuundoredo;
 
-import models.Board;
+import models.Connect4;
 import views.BoardView;
 
 public class QuitOption extends Option {
@@ -12,11 +12,11 @@ public class QuitOption extends Option {
     }
 
     @Override
-    public void interact(Board board) {
-        BoardView.showBoard(board.getColors());
-        int toDelete = board.getHistory().getList().size();
-        for(int i=board.getHistory().getIndexHistory(); i < toDelete; i++){
-            board.getHistory().getList().removeLast();
+    public void interact(Connect4 connect4) {
+        BoardView.showBoard(connect4.getBoard().getColors());
+        int toDelete = connect4.getBoard().getHistory().getList().size();
+        for(int i=connect4.getBoard().getHistory().getIndexHistory(); i < toDelete; i++){
+            connect4.getBoard().getHistory().getList().removeLast();
         }
         this.executed = true;
     }

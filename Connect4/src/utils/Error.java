@@ -5,7 +5,7 @@ import views.UtilMenuView;
 
 public enum Error {
     COLUMN_FULL("The column is full, choose another one"),
-    OUT_OF_BOUNDS("The column is out of bounds, choose another one"),
+    OUT_OF_BOUNDS("The number is out of bounds, choose another one"),
     NO_UNDO_OPTION("No more undo options"),
     NO_REDO_OPTION("No more redo options"),
     NULL;

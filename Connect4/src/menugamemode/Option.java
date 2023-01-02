@@ -1,11 +1,9 @@
 package menugamemode;
 
 import models.Connect4;
-import utils.Console;
 import views.UtilMenuView;
 
 public abstract class Option {
-    public static Console console = new Console();
     private String title;
 
     public Option(String title) {

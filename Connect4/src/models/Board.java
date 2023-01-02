@@ -1,7 +1,5 @@
 package models;
 
-import java.util.InputMismatchException;
-
 import views.BoardView;
 
 public class Board {
@@ -23,19 +21,17 @@ public class Board {
         }
     }
 
-    void setColors(Coordinate coordinate, Color color) {
+    void setColors(Coordinate coordinate, Color color) throws IndexOutOfBoundsException {
         if(Coordinate.outOfBounds(coordinate)){
             throw new IndexOutOfBoundsException(utils.Error.OUT_OF_BOUNDS.getMessage());
         }
         this.colors[coordinate.getPosRow()][coordinate.getPosCol()]=color;
     }
 
-    public void putToken(int column, Color color) throws IndexOutOfBoundsException, InputMismatchException{
+    public void putToken(int column, Color color) throws IllegalArgumentException, IndexOutOfBoundsException{
         Coordinate coordinate=new Coordinate(0,column);
-        if (Coordinate.outOfBounds(coordinate)){
-            throw new IndexOutOfBoundsException(utils.Error.OUT_OF_BOUNDS.getMessage());
-        }else if(!this.isColumnFree(coordinate.getPosCol())){
-            throw new InputMismatchException(utils.Error.COLUMN_FULL.getMessage());
+        if(!this.isColumnFree(coordinate.getPosCol())){
+            throw new IllegalArgumentException(utils.Error.COLUMN_FULL.getMessage());
         }
         while (positionFull(coordinate)){
             coordinate.setRow(coordinate.getPosRow()+1);
@@ -47,7 +43,7 @@ public class Board {
         BoardView.showBoard(this.getColors());
     }
 
-    private boolean positionFull(Coordinate coordinate){
+    private boolean positionFull(Coordinate coordinate) throws IndexOutOfBoundsException{
         if(Coordinate.outOfBounds(coordinate)){
             throw new IndexOutOfBoundsException(utils.Error.OUT_OF_BOUNDS.getMessage());
         }
