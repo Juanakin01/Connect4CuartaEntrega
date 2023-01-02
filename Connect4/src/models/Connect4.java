@@ -20,6 +20,7 @@ public class Connect4 {
             if(!this.menu.isExecutedQuitOption()){
                 this.turn = new Turn(this.board,gameMode.initialize(this.board));
                 this.playGame();
+                this.board.getHistory().resetHistory();
             }
         }while(!this.menu.isExecutedQuitOption() && this.isResumedGame());
 

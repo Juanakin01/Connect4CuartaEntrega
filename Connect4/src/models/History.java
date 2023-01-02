@@ -24,6 +24,11 @@ public class History{
         return this.indexHistory;
     }
 
+    public void resetHistory(){
+        this.indexHistory = 0;
+        this.history.clear();
+    }
+
     public void setColor(Color color){
         this.currentColor = color;
     }
