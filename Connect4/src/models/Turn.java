@@ -39,7 +39,4 @@ public class Turn {
     public void writeWinner() {
         this.players[this.activePlayer].writeWinner();
     }
-
-
-
 }

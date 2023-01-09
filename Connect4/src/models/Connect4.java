@@ -18,9 +18,9 @@ public class Connect4 {
         do{
             this.menu.interact(this);
             if(!this.menu.isExecutedQuitOption()){
-                this.turn = new Turn(this.board,gameMode.initialize(this.board));
-                this.playGame();
+                this.turn = new Turn(this.board,gameMode.load(this.board));
                 this.board.getHistory().resetHistory();
+                this.playGame();
             }
         }while(!this.menu.isExecutedQuitOption() && this.isResumedGame());
 
@@ -57,7 +57,7 @@ public class Connect4 {
         yesNoDialog.read(Message.CONTINUE.toString());
         if (yesNoDialog.isAffirmative()) {
             this.board.reset();
-            this.turn.reset(gameMode.initialize(this.board));
+            this.turn.reset(gameMode.load(this.board));
         }
         return yesNoDialog.isAffirmative();
     }

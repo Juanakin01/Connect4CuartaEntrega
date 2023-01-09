@@ -1,5 +1,5 @@
 package models;
 
 public interface GameMode {
-    public abstract Player[] initialize(Board board);
+    public abstract Player[] load(Board board);
 }

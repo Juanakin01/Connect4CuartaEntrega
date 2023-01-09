@@ -36,11 +36,11 @@ public class Board {
         while (positionFull(coordinate)){
             coordinate.setRow(coordinate.getPosRow()+1);
         }
-        setColors(coordinate,color);
+        this.setColors(coordinate,color);
         this.lastToken.setRow(coordinate.getPosRow());
         this.lastToken.setCol(coordinate.getPosCol());
-        history.updateHistory(new Coordinate(coordinate.getPosRow(), coordinate.getPosCol()));
         BoardView.showBoard(this.getColors());
+        history.updateHistory(new Coordinate(coordinate.getPosRow(), coordinate.getPosCol()));
     }
 
     private boolean positionFull(Coordinate coordinate) throws IndexOutOfBoundsException{
@@ -78,9 +78,6 @@ public class Board {
         }
         return acumColumn == Coordinate.COLS;
     };
-
-
-
 
     public boolean isConnectFour(Color activeColor) {
         return this.isConnectHorizontal(activeColor)

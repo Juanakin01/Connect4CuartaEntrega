@@ -16,8 +16,6 @@ public class Views {
         return Console.getInstance().readInt(string);
     }
 
-
-
     public static void showBoard(Color[][] colors) {
         for (int i = Coordinate.ROWS-1; i >= 0; i--) {
             for (int j = 0; j < Coordinate.COLS; j++) {
